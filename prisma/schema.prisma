@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  status       Status
+  progress     Int      @default(0)
+  timeEstimate String?  // Used for launch date
+  category     String
+  iconName     String   @default("Globe")
+  gradient     String
+  bgColor      String   @default("bg-slate-800/90")
+  href         String   @default("#") // Used for domain URL
+  position     Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  manuscripts Manuscript[]
+
+  @@map("users")
+}
+
+model Manuscript {
+  id          String           @id @default(cuid())
+  title       String
+  abstract    String
+  content     String?
+  status      ManuscriptStatus @default(DRAFT)
+  authorId    String
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("manuscripts")
+}
+
+model Analytics {
+  id          String   @id @default(cuid())
+  projectId   String
+  pageViews   Int      @default(0)
+  downloads   Int      @default(0)
+  engagement  Float    @default(0)
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@map("analytics")
+}
+
+enum Status {
+  LIVE
+  BETA
+  COMING_SOON
+}
+
+enum Role {
+  USER
+  ADMIN
+  EDITOR
+}
+
+enum ManuscriptStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+  PUBLISHED
+}
