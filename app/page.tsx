@@ -1,5 +1,6 @@
 import { CardGrid } from "@/components/card-grid"
 // import { AdminLink } from "@/components/admin-link" // Uncomment if needed
+import HomePage from "@/components/footer"
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         </div> */}
 
         <CardGrid />
+        <HomePage/>
       </div>
     </div>
   )
