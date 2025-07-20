@@ -1,7 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa"
+import { Globe, Mail } from "lucide-react"
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 export default function Footer() {
   return (
@@ -9,48 +10,99 @@ export default function Footer() {
       initial={{ y: 50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bottom-0 w-full bg-white text-gray-700 border-t border-gray-200 z-50"
+      className="relative mt-20 w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white border-t border-white/10"
     >
-      <div className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
-        {/* Column 1: Logo & tagline */}
-        <div>
-          <h2 className="text-xl font-semibold">Atomic Health</h2>
-          <p className="mt-2 text-sm">
-            Better healthcare by design.
-          </p>
-        </div>
-        {/* Column 2: Company */}
-        <div>
-          <h3 className="font-medium mb-2">Company</h3>
-          <ul className="space-y-1 text-sm">
-            <li><a href="https://creatorresearch.com/" className="hover:underline">About</a></li>
-            <li><a href="https://creatorresearch.com/" className="hover:underline">Work</a></li>
-            <li><a href="https://creatorresearch.com/" className="hover:underline">Services</a></li>
-            <li><a href="https://creatorresearch.com/" className="hover:underline">Contact</a></li>
-          </ul>
-        </div>
-        {/* Column 3: Resources */}
-        <div>
-          <h3 className="font-medium mb-2">Resources</h3>
-          <ul className="space-y-1 text-sm">
-            <li><a href="https://creatorresearch.com/" className="hover:underline">Blog</a></li>
-            <li><a href="https://creatorresearch.com/" className="hover:underline">Case Studies</a></li>
-            <li><a href="https://creatorresearch.com/" className="hover:underline">Privacy Policy</a></li>
-            <li><a href="https://creatorresearch.com/" className="hover:underline">Terms of Service</a></li>
-          </ul>
-        </div>
-        {/* Column 4: Connect */}
-        <div>
-          <h3 className="font-medium mb-2">Connect</h3>
-          <div className="flex space-x-4">
-            <a href="https://twitter.com/CreatorResearch "><FaTwitter className="text-xl hover:text-blue-500" /></a>
-            <a href="https://linkedin.com/CreatorResearch "><FaLinkedin className="text-xl hover:text-blue-700" /></a>
-            <a href="https://instagram.com/CreatorResearch "><FaInstagram className="text-xl hover:text-pink-500" /></a>
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-blue-500/5" />
+      
+      <div className="relative max-w-6xl mx-auto px-6 py-12">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {/* Column 1: Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <Globe className="w-5 h-5 text-white" />
+              </div>
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+                ViitxCreator
+              </h2>
+            </div>
+            <p className="text-white/70 text-sm leading-relaxed">
+              Empowering creators, researchers, and users worldwide with innovative digital solutions and comprehensive platforms.
+            </p>
+          </div>
+
+          {/* Column 2: Products */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Our Products</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Research Journal Hub</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Analytics Dashboard</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Author Console</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Data Repository</a></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Company */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Company</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Our Mission</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Careers</a></li>
+              <li><a href="#" className="text-white/70 hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Connect */}
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Connect</h3>
+            <div className="flex flex-col space-y-3">
+              <a 
+                href="mailto:hello@viitxcreator.com" 
+                className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
+              >
+                <Mail className="w-4 h-4" />
+                hello@viitxcreator.com
+              </a>
+              <div className="flex space-x-3">
+                <a 
+                  href="https://twitter.com/viitxcreator" 
+                  className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300"
+                >
+                  <FaTwitter className="text-white" />
+                </a>
+                <a 
+                  href="https://linkedin.com/company/viitxcreator" 
+                  className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300"
+                >
+                  <FaLinkedin className="text-white" />
+                </a>
+                <a 
+                  href="https://github.com/viitxcreator" 
+                  className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/20 hover:bg-white/20 transition-all duration-300"
+                >
+                  <FaGithub className="text-white" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="bg-gray-50 py-3 text-center text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} ViitxCreator. All rights reserved.
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/60 text-sm">
+              &copy; {new Date().getFullYear()} ViitxCreator. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <a href="#" className="text-white/60 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="text-white/60 hover:text-white transition-colors">Terms of Service</a>
+              <a href="#" className="text-white/60 hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
       </div>
     </motion.footer>
   )
